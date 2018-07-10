@@ -44,7 +44,7 @@ public class Library {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 376);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		frame.setVisible(true);
 		

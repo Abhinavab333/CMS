@@ -97,8 +97,9 @@ public class Table {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 615, 348);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setVisible(true);
 		
 		table = new JTable();
 		table.setFont(new Font("Tahoma", Font.PLAIN, 11));

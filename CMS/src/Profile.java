@@ -40,7 +40,7 @@ public class Profile {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 531, 371);
 		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Name");

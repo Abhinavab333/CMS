@@ -91,10 +91,6 @@ public class AdminHome {
 		mntmEmployee_1.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 		mnAttendence.add(mntmEmployee_1);
 		
-		JMenuItem mntmNewMenuItem = new JMenuItem("Student");
-		mntmNewMenuItem.setFont(new Font("Segoe UI", Font.PLAIN, 14));
-		mnAttendence.add(mntmNewMenuItem);
-		
 		JMenu mnFeeStructure = new JMenu("Fee Structure");
 		mnFeeStructure.setFont(new Font("Segoe UI", Font.PLAIN, 16));
 		menuBar.add(mnFeeStructure);

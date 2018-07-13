@@ -25,18 +25,7 @@ public class studentattendence {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					studentattendence window = new studentattendence();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the application.
@@ -50,10 +39,11 @@ public class studentattendence {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.getContentPane().setBackground(Color.GRAY);
+		frame.getContentPane().setBackground(new Color(95, 158, 160));
 		frame.setBounds(100, 100, 711, 356);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setVisible(true);
 		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setFont(new Font("Tahoma", Font.PLAIN, 13));
@@ -305,8 +295,8 @@ public class studentattendence {
 		frame.getContentPane().add(btnSubmit);
 		
 		JLabel lblStudentAttendance = new JLabel("Student Attendance");
-		lblStudentAttendance.setForeground(new Color(51, 0, 153));
-		lblStudentAttendance.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblStudentAttendance.setForeground(new Color(0, 0, 0));
+		lblStudentAttendance.setFont(new Font("Tahoma", Font.BOLD, 25));
 		lblStudentAttendance.setBounds(231, 25, 251, 33);
 		frame.getContentPane().add(lblStudentAttendance);
 	}

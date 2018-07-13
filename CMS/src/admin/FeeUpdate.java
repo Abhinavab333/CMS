@@ -18,6 +18,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class FeeUpdate {
 
@@ -62,12 +63,14 @@ public class FeeUpdate {
 			System.out.println(e);
 		}
 		frame = new JFrame();
+		frame.getContentPane().setBackground(new Color(95, 158, 160));
 		frame.setBounds(100, 100, 734, 458);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		frame.setVisible(true);
 		
 		JLabel lblFeeUpdate = new JLabel("                Fee Update");
-		lblFeeUpdate.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblFeeUpdate.setFont(new Font("Tahoma", Font.BOLD, 25));
 		lblFeeUpdate.setBounds(182, 11, 446, 37);
 		frame.getContentPane().add(lblFeeUpdate);
 		

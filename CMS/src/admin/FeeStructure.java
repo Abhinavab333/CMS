@@ -66,19 +66,8 @@ public class FeeStructure {
 	}
 
 
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					FeeStructure window = new FeeStructure();
-					window.frame.setVisible(true);
-					window.initialize();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
+	
 
 	/**
 	 * Create the application.
@@ -92,10 +81,11 @@ public class FeeStructure {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.getContentPane().setBackground(new Color(95, 158, 160));
 		frame.setBounds(100, 100, 615, 348);
-		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		//frame.setVisible(true);
+		frame.setVisible(true);
 		
 		table = new JTable();
 		table.setFont(new Font("Tahoma", Font.PLAIN, 11));

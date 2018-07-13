@@ -24,6 +24,7 @@ import java.sql.Date;
 import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JMonthChooser;
+import java.awt.Color;
 public class empattendence {
 
 	private JFrame frame;
@@ -64,13 +65,14 @@ public class empattendence {
 		java.util.Date date;
 		java.sql.Date sqldate;
 		frame = new JFrame();
+		frame.getContentPane().setBackground(new Color(95, 158, 160));
 		frame.setBounds(100, 100, 751, 538);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		frame.setVisible(true);
 		
 		JLabel lblEmployeeAttendence = new JLabel("        Employee Attendence");
-		lblEmployeeAttendence.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblEmployeeAttendence.setFont(new Font("Tahoma", Font.BOLD, 25));
 		lblEmployeeAttendence.setBounds(171, 11, 389, 51);
 		frame.getContentPane().add(lblEmployeeAttendence);
 		

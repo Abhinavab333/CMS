@@ -68,19 +68,7 @@ public class Table {
 	}
 
 
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Table window = new Table();
-					window.frame.setVisible(true);
-					window.initialize();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the application.

@@ -112,9 +112,9 @@ public class AdminHome {
 		mntmLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				//new Login();
-				new Login();
+				//new Login();
 				//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				
+				System.exit(0);
 			}
 		});
 		mntmLogout.setFont(new Font("Segoe UI", Font.PLAIN, 14));

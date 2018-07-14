@@ -20,18 +20,7 @@ public class Home {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Home window = new Home();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the application.
@@ -65,15 +54,15 @@ public class Home {
 				Connection con=DriverManager.getConnection(url,"root","");
 				//System.out.println("abc");
 				Statement stmt=con.createStatement();
-				ResultSet rs=stmt.executeQuery("select *from studentdb where sid='"+Login.sid+"'");
+				ResultSet rs=stmt.executeQuery("select *from studentdb where STUDENTID='"+Login.sid+"'");
 				
 				while(rs.next()) {
 					
-					Profile.lable_1.setText(rs.getString("sname"));
-					Profile.label_2.setText(rs.getString("scourse"));
-					Profile.label_3.setText(rs.getString("sbranch"));
-					Profile.label_4.setText(rs.getString("semail"));
-					Profile.label_5.setText(rs.getString("sphone"));
+					Profile.lable_1.setText(rs.getString("STUDENTNAME"));
+					Profile.label_2.setText(rs.getString("COURSES"));
+					Profile.label_3.setText(rs.getString("BRANCH"));
+					Profile.label_4.setText(rs.getString("STUDENTEMAIL"));
+					Profile.label_5.setText(rs.getString("MOBNO"));
 					
 				}
 

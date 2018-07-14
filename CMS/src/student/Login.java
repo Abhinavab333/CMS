@@ -1,5 +1,6 @@
 package student;
 import java.awt.EventQueue;
+import employee.*;
 import admin.*;
 
 import javax.swing.JFrame;
@@ -90,6 +91,7 @@ public  class Login {
 		frame.getContentPane().add(textField_1);
 		textField_1.setColumns(10);
 		
+		
 		JButton btnLogin = new JButton("Student Login");
 		btnLogin.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnLogin.addActionListener(new ActionListener() {
@@ -106,9 +108,10 @@ public  class Login {
 			 String a=textField_1.getText();
 			 sid=Integer.parseInt(b);
 			while(rs.next()) {
-				if(b.equals(rs.getString("sid"))&&a.equals(rs.getString("spass"))) {
+				if(b.equals(rs.getString("STUDENTID"))&&a.equals(rs.getString("STUDENTPASSWORD"))) {
 					new Home();
 				}
+				
 				
 			}
 
@@ -116,7 +119,7 @@ public  class Login {
 					
 				}	
 				catch(Exception e) {
-					System.out.println(e);
+					JOptionPane.showMessageDialog(null, "Invalid Input");
 				}
 			}
 		});
@@ -124,6 +127,49 @@ public  class Login {
 		frame.getContentPane().add(btnLogin);
 		
 		JButton btnEmployeeLogin = new JButton("Employee Login");
+		btnEmployeeLogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try{					
+					Class.forName("com.mysql.jdbc.Driver");
+					String url="jdbc:mysql://localhost:3306/cms";
+			Connection con=DriverManager.getConnection(url,"root","");
+						
+			String b=textField.getText();
+			 String a=textField_1.getText();
+			int eid=Integer.parseInt(b);
+			PreparedStatement pst=con.prepareStatement("select * from employee where EmpId=?");
+			pst.setInt(1, eid);
+			ResultSet rs=pst.executeQuery();
+			
+			if(rs.next())
+			{
+				if(a.equals(rs.getString(4))) 
+				{
+					new EmployeeHome();
+				}
+				else
+				{
+					
+					JOptionPane.showMessageDialog(null, "Invalid Password");
+				}
+				
+			}
+			else
+			{
+				JOptionPane.showMessageDialog(null, "Invalid User Id");
+			}
+
+				
+					
+				}	
+				catch(Exception e) {
+					JOptionPane.showMessageDialog(null, "Invalid Input");
+					//System.out.println(e);
+				}
+			}
+				
+			
+		});
 		btnEmployeeLogin.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnEmployeeLogin.setBounds(238, 301, 157, 23);
 		frame.getContentPane().add(btnEmployeeLogin);
@@ -141,6 +187,7 @@ public  class Login {
 					JOptionPane.showMessageDialog(null, "Wrong Login Credentials");
 				}
 			}
+		
 		});
 		btnAdminLogin.setBounds(409, 301, 128, 23);
 		frame.getContentPane().add(btnAdminLogin);

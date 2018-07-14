@@ -17,18 +17,7 @@ public class EmployeeHome {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					EmployeeHome window = new EmployeeHome();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	
 
 	/**
 	 * Create the application.
@@ -44,9 +33,9 @@ public class EmployeeHome {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(SystemColor.activeCaption);
 		frame.setBounds(100, 100, 774, 395);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
+		frame.setVisible(true);
 		JLabel lblEmployeeHome = new JLabel("              Employee Home");
 		lblEmployeeHome.setFont(new Font("Sitka Subheading", Font.BOLD, 28));
 		lblEmployeeHome.setBounds(174, 0, 447, 42);

@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -34,7 +35,7 @@ public class Employee implements ActionListener
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
-	private JTextField textField_3;
+	private JPasswordField textField_3;
 	private JTextField textField_4;
 	private JTextField textField_5;
 
@@ -44,26 +45,6 @@ public class Employee implements ActionListener
 	
 	JButton btnFirst,btnPrevious,btnNext,btnLast;
 	
-	public static void main(String[] args) throws ClassNotFoundException,SQLException
-	{
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Employee window = new Employee();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-		
-		Class.forName("oracle.jdbc.driver.OracleDriver");  
-		conn=DriverManager.getConnection(  
-				"jdbc:oracle:thin:@localhost:1521:xe","system","virubhai@");
-		//JOptionPane.showMessageDialog(null, "Connect");
-		pst1=conn.prepareStatement("select * from Employee",ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
-		rs=pst1.executeQuery();
-	}
 
 	/**
 	 * Create the application.
@@ -78,6 +59,19 @@ public class Employee implements ActionListener
 	 */
 	private void initialize() throws ClassNotFoundException,SQLException 
 	{
+		try {
+			
+			Class.forName("com.mysql.jdbc.Driver");
+			String url="jdbc:mysql://localhost:3306/cms";
+			conn=DriverManager.getConnection(url, "root", "");
+			//JOptionPane.showMessageDialog(null, "Connect");
+			pst1=conn.prepareStatement("select * from employee",ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE);
+			rs=pst1.executeQuery();
+		}
+		catch(Exception e)
+		{
+			System.out.println(e);
+		}
 		frame = new JFrame();
 		frame.getContentPane().setBackground(SystemColor.activeCaption);
 		frame.getContentPane().setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -132,7 +126,7 @@ public class Employee implements ActionListener
 		lblPassword.setBounds(194, 319, 130, 26);
 		frame.getContentPane().add(lblPassword);
 		
-		textField_3 = new JTextField();
+		textField_3 = new JPasswordField();
 		textField_3.setBounds(446, 320, 221, 32);
 		frame.getContentPane().add(textField_3);
 		textField_3.setColumns(10);
@@ -188,7 +182,7 @@ public class Employee implements ActionListener
 			public void actionPerformed(ActionEvent e) 
 			{
 				try {					
-					pst=conn.prepareStatement("insert into Employee values(?,?,?,?,?,?)");
+					pst=conn.prepareStatement("insert into employee values(?,?,?,?,?,?)");
 					pst.setInt(1, Integer.parseInt(textField.getText()));
 					pst.setString(2, textField_1.getText());
 					pst.setString(3, textField_2.getText());
@@ -212,7 +206,7 @@ public class Employee implements ActionListener
 			{
 				try 
 				{
-					pst=conn.prepareStatement("update Employee set EmpName=?,Email=?,Password=?,DOJ=?,Mob=? where EmpId=?");
+					pst=conn.prepareStatement("update employee set EmpName=?,Email=?,Password=?,DOJ=?,Mob=? where EmpId=?");
 					pst.setString(1, textField_1.getText());
 					pst.setString(2, textField_2.getText());
 					pst.setString(3, textField_3.getText());
@@ -241,7 +235,7 @@ public class Employee implements ActionListener
 			{
 				try 
 				{
-					pst=conn.prepareStatement("Delete from Employee where EmpID=?");
+					pst=conn.prepareStatement("Delete from employee where EmpID=?");
 					pst.setInt(1, Integer.parseInt(textField.getText()));
 					pst.execute();
 					
@@ -264,7 +258,7 @@ public class Employee implements ActionListener
 			{
 				try 
 				{
-					pst=conn.prepareStatement("select * from Employee where EmpId=?");
+					pst=conn.prepareStatement("select * from employee where EmpId=?");
 					pst.setInt(1, Integer.parseInt(textField.getText()));
 					rs=pst.executeQuery();
 					rs.next();
@@ -276,6 +270,7 @@ public class Employee implements ActionListener
 				}
 				catch (SQLException e1) 
 				{
+					JOptionPane.showMessageDialog(null, "Id Not Found");
 					System.out.println(e1);
 				}
 			}

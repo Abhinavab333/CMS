@@ -88,9 +88,16 @@ public class Table {
 		frame.setVisible(true);
 		
 		table = new JTable();
+		table.setEnabled(false);
 		table.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		table.setBackground(Color.WHITE);
-		DefaultTableModel model=new DefaultTableModel();
+		DefaultTableModel model=new DefaultTableModel()
+		 {
+		    public boolean isCellEditable(int row, int column)
+		    {
+		      return false;//This causes all cells to be not editable
+		    }
+		  };
 		Object[] column=new Object[5];
 		column[0]="Subject";
 		column[1]="Total Lectures";

@@ -83,14 +83,20 @@ public class FeeStructure {
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(95, 158, 160));
 		frame.setBounds(100, 100, 615, 348);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		frame.setVisible(true);
 		
 		table = new JTable();
 		table.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		table.setBackground(Color.WHITE);
-		DefaultTableModel model=new DefaultTableModel();
+		DefaultTableModel model=new DefaultTableModel()
+		 {
+		    public boolean isCellEditable(int row, int column)
+		    {
+		      return false;//This causes all cells to be not editable
+		    }
+		  };
 		Object[] column=new Object[4];
 		column[0]="Year";
 		column[1]="B.Tech";

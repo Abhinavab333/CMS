@@ -1,5 +1,6 @@
 package student;
 import java.awt.EventQueue;
+import faculty.*;
 import employee.*;
 import admin.*;
 
@@ -20,7 +21,7 @@ import java.sql.*;
 import java.awt.SystemColor;
 public  class Login {
 	static int sid;
-
+public static int eid;
 	private JFrame frame;
 	private JTextField textField;
 	private JPasswordField textField_1;
@@ -123,10 +124,10 @@ public  class Login {
 				}
 			}
 		});
-		btnLogin.setBounds(80, 301, 140, 23);
+		btnLogin.setBounds(10, 301, 140, 23);
 		frame.getContentPane().add(btnLogin);
 		
-		JButton btnEmployeeLogin = new JButton("Employee Login");
+		JButton btnEmployeeLogin = new JButton("Faculty Login");
 		btnEmployeeLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try{					
@@ -145,7 +146,7 @@ public  class Login {
 			{
 				if(a.equals(rs.getString(4))) 
 				{
-					new EmployeeHome();
+					new FacultyHome();
 				}
 				else
 				{
@@ -171,7 +172,7 @@ public  class Login {
 			
 		});
 		btnEmployeeLogin.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnEmployeeLogin.setBounds(238, 301, 157, 23);
+		btnEmployeeLogin.setBounds(166, 301, 157, 23);
 		frame.getContentPane().add(btnEmployeeLogin);
 		
 		JButton btnAdminLogin = new JButton("Admin Login");
@@ -189,8 +190,54 @@ public  class Login {
 			}
 		
 		});
-		btnAdminLogin.setBounds(409, 301, 128, 23);
+		btnAdminLogin.setBounds(493, 301, 128, 23);
 		frame.getContentPane().add(btnAdminLogin);
+		
+		JButton btnEmployeeLogin_1 = new JButton("Employee Login");
+		btnEmployeeLogin_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try{					
+					Class.forName("com.mysql.jdbc.Driver");
+					String url="jdbc:mysql://localhost:3306/cms";
+			Connection con=DriverManager.getConnection(url,"root","");
+						
+			String b=textField.getText();
+			 String a=textField_1.getText();
+		  eid=Integer.parseInt(b);
+			PreparedStatement pst=con.prepareStatement("select * from employee where EmpId=?");
+			pst.setInt(1, eid);
+			ResultSet rs=pst.executeQuery();
+			
+			if(rs.next())
+			{
+				if(a.equals(rs.getString(4))) 
+				{
+					new EmployeeHome();
+				}
+				else
+				{
+					
+					JOptionPane.showMessageDialog(null, "Invalid Password");
+				}
+				
+			}
+			else
+			{
+				JOptionPane.showMessageDialog(null, "Invalid User Id");
+			}
+
+				
+					
+				}	
+				catch(Exception ee) {
+					JOptionPane.showMessageDialog(null, "Invalid Input");
+					//System.out.println(e);
+				}
+			}
+		});
+		btnEmployeeLogin_1.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnEmployeeLogin_1.setBounds(333, 301, 150, 23);
+		frame.getContentPane().add(btnEmployeeLogin_1);
 	}
 	public void seeProfile(String b) {
 		

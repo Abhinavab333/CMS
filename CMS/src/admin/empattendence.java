@@ -169,12 +169,12 @@ public class empattendence {
 				//System.out.println("abc");
 				Statement stmt=con.createStatement();
 				int b=Integer.parseInt(textField.getText());
-				ResultSet rs=stmt.executeQuery("select *from emp where empid='"+b+"'");
+				ResultSet rs=stmt.executeQuery("select *from employee where empid='"+b+"'");
 				while(rs.next()) {
-					name.setText(rs.getString("empname"));
-					email.setText(rs.getString("empemail"));
-					phone.setText(rs.getString("emphone"));
-					doj.setText(rs.getString("doj"));
+					name.setText(rs.getString("EmpId"));
+					email.setText(rs.getString("Email"));
+					phone.setText(rs.getString("Mob"));
+					doj.setText(rs.getString("DOJ"));
 				}
 				
 				

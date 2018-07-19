@@ -312,9 +312,26 @@ public class Studentreg implements ActionListener{
 						pst.setString(5, textField_3.getText());
 						pst.setString(6, textField_4.getText());
 					   pst.setInt(7, Integer.parseInt(textField_5.getText()));
+					   final String EMAIL_PATTERN = 
+							    "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+							    + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+						String email=textField_3.getText();
 					   pst.setString(8,((JTextField)dob.getDateEditor().getUiComponent()).getText());
+					   if(!textField_1.getText().matches("[A-Z][a-zA-Z]*")) {
+						   JOptionPane.showMessageDialog(null,"Please enter name in name format only");
+					   }
+					   
+					   else if (!email.matches(EMAIL_PATTERN)) 
+							{
+								JOptionPane.showMessageDialog(null, "Please Enter Valid Email ID");							
+							}
+						
+							
+					   
+					   else {
 					   pst.executeUpdate();
 					   JOptionPane.showMessageDialog(null, "Data successfully inserted");
+					   }
 					}  catch(NumberFormatException e3){
 						   System.out.println(e3);
 					}

@@ -182,15 +182,30 @@ public class Employee implements ActionListener
 			public void actionPerformed(ActionEvent e) 
 			{
 				try {					
-					pst=conn.prepareStatement("insert into employee values(?,?,?,?,?,?)");
+					pst=conn.prepareStatement("insert into Employee values(?,?,?,?,?,?)");
 					pst.setInt(1, Integer.parseInt(textField.getText()));
 					pst.setString(2, textField_1.getText());
 					pst.setString(3, textField_2.getText());
 					pst.setString(4, textField_3.getText());
 					pst.setString(5, textField_4.getText());
 					pst.setInt(6, Integer.parseInt(textField_5.getText()));
-					pst.executeUpdate();
-					JOptionPane.showMessageDialog(null, "Successfully inserted");
+					final String EMAIL_PATTERN = 
+						    "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+						    + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+					String email=textField_2.getText();
+					  if(!textField_1.getText().matches("[A-Z][a-zA-Z]*")) {
+						   JOptionPane.showMessageDialog(null,"Please enter name in name format only");
+					   }
+					  else if (!email.matches(EMAIL_PATTERN)) 
+						{
+							JOptionPane.showMessageDialog(null, "Please Enter Valid Email ID");							
+						}
+						else
+						{
+							pst.executeUpdate();
+							JOptionPane.showMessageDialog(null, "Successfully inserted");
+						}
+					
 				} catch (SQLException e1) {
 					System.out.println(e1);
 				}
